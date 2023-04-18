@@ -1101,3 +1101,72 @@ class p5_test {
 ---
 
 ### P6. In this program we consider program given in P4 but value can be float rather than integers
+
+**a) Identify the equivalence classes for the system**
+Equivalence Classes:<br>
+| Equivalence class | Input Status
+| ----------------- | -------------
+| EC1 | Invalid inputs (negative or zero values)
+| EC2 | Non-triangle (sum of the two shorter sides is not greater than the longest side)
+| EC3 | Scalene triangle (no sides are equal)
+| EC4 | Isosceles triangle (two sides are equal)
+| EC5 | Equilateral triangle (all sides are equal)
+| EC6 | Right-angled triangle (satisfies the Pythagorean theorem)
+
+**b) Identify test cases to cover the identified equivalence classes. Also, explicitly mention which test case would cover which equivalence class. (Hint: you must need to be ensure that the identified set of test cases cover all identified equivalence classes)**
+Test cases:<br>
+
+| Test-case ID | Test-case
+| ------------ | ---------
+| TC1 | -1, 0 
+| TC2 | 1, 2, 5
+| TC3 | 3, 4, 5
+| TC4 | 5, 5, 7
+| TC5 | 6, 6, 6
+| TC6 | 3, 4, 5
+
+Test case 1 covers class 1, test case 2 covers class 2, test case 3 covers class 3, test case 4 covers class 4, test case 5 covers class 5, and test case 6 covers class 6
+
+**c) For the boundary condition A + B > C case (scalene triangle), identify test cases to verify the boundary.**
+2, 3, 6<br>
+3, 4, 8<br>
+Both test cases have two sides that are shorter than the third side, and should not form a triangle
+
+<br>
+
+**d) For the boundary condition A = C case (isosceles triangle), identify test cases to verify the boundary.**
+1, 2, 1<br>
+0, 2, 0<br>
+5, 6, 5<br>
+Both test cases have two sides that are equal, but only test case 2 should form an isosceles triangle, other input are invalid.
+<br>
+
+**e) For the boundary condition A = B = C case (equilateral triangle), identify test cases to verify the boundary.**
+5, 5, 5<br>
+0, 0, 0<br>
+Both test cases have all sides equal, but only test case 1 should form an equilateral triangle, other input are invalid.
+
+<br>
+
+**f) For the boundary condition A2 + B2 = C2 case (right-angle triangle), identify test cases to verify the boundary.**
+3, 4, 5
+0, 0, 0
+-3, -4, -5
+Both test cases satisfy the Pythagorean theorem, but only test case 1 should form right-angled triangle, other input are invalid.
+triangle
+
+<br>
+
+**g) For the non-triangle case, identify test cases to explore the boundary.**
+Test cases for the non-triangle case:<br>
+TC11 (EC3): A=2, B=2, C=4 (sum of A and B is less than C)<br>
+
+<br>
+
+**h) For non-positive input, identify test points.**
+Test points for non-positive input:<br>
+TP1 (EC2): A=0, B=4, C=5 (invalid input)<br>
+TP2 (EC2): A=-2, B=4, C=5 (invalid input)<br>
+Note: Test cases TC1 to TC10 covers all identified equivalence classes.<br>
+<br>
+
