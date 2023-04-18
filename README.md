@@ -865,10 +865,238 @@ class p4_test {
 &rarr; Test-case for this program is as follows.
 
 **allProgramme.java**
+```java
+public class allProgramme
+    {
+        public static boolean prefix(String s1, String s2)
+	    {
+		if (s1.length() > s2.length())
+		{
+		    return false;
+		}
 
-**p4_test.java**
+		for (int i = 0; i < s1.length(); i++)
+		{
+		    if (s1.charAt(i) != s2.charAt(i))
+		    {
+			return false;
+		    }
+		}
+		return true;
+	    }
+    }
+```
+
+**p5_test.java**
+```java
+package tests;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class p5_test {
+
+	@Test
+	public void test1() {
+		String str1 = "good", str2 = "good morning";
+		
+		allProgramme program = new allProgramme();
+		boolean result = program.prefix(str1, str2);
+		
+		assertEquals(result, true);
+	}
+	@Test
+	public void test2() {
+		String str1 = "a", str2 = "abc";
+		
+		allProgramme program = new allProgramme();
+		boolean result = program.prefix(str1, str2);
+		
+		assertEquals(result, true);
+	}
+	@Test
+	public void test3() {
+		String str1 = "", str2 = "good morning";
+		
+		allProgramme program = new allProgramme();
+		boolean result = program.prefix(str1, str2);
+		
+		assertEquals(result, true);
+	}
+	@Test
+	public void test4() {
+		String str1 = "morning", str2 = "good morning";
+		
+		allProgramme program = new allProgramme();
+		boolean result = program.prefix(str1, str2);
+		
+		assertEquals(result, false);
+	}
+	@Test
+	public void test5() {
+		String str1 = "soft", str2 = "software";
+		
+		allProgramme program = new allProgramme();
+		boolean result = program.prefix(str1, str2);
+		
+		assertEquals(result, true);
+	}
+	@Test
+	public void test6() {
+		String str1 = "software", str2 = "soft";
+		
+		allProgramme program = new allProgramme();
+		boolean result = program.prefix(str1, str2);
+		
+		assertEquals(result, false);
+	}
+	@Test
+	public void test7() {
+		String str1 = "a", str2 = "ab";
+		
+		allProgramme program = new allProgramme();
+		boolean result = program.prefix(str1, str2);
+		
+		assertEquals(result, true);
+	}
+	@Test
+	public void test8() {
+		String str1 = "software", str2 = "softwareee";
+		
+		allProgramme program = new allProgramme();
+		boolean result = program.prefix(str1, str2);
+		
+		assertEquals(result, true);
+	}
+	@Test
+	public void test9() {
+		String str1 = "abc", str2 = "abc";
+		
+		allProgramme program = new allProgramme();
+		boolean result = program.prefix(str1, str2);
+		
+		assertEquals(result, true);
+	}
+	@Test
+	public void test10() {
+		String str1 = "a", str2 = "b";
+		
+		allProgramme program = new allProgramme();
+		boolean result = program.prefix(str1, str2);
+		
+		assertEquals(result, false);
+	}
+	@Test
+	public void test11() {
+		String str1 = "a", str2 = "a";
+		
+		allProgramme program = new allProgramme();
+		boolean result = program.prefix(str1, str2);
+		
+		assertEquals(result, true);
+	}
+	@Test
+	public void test12() {
+		String str1 = "", str2 = "";
+		
+		allProgramme program = new allProgramme();
+		boolean result = program.prefix(str1, str2);
+		
+		assertEquals(result, true);
+	}
+
+}
+
+```
+**Equivalence Partitioning:**
+
+<table>
+  <tr>
+    <th>Tester Action and Input Data</th>
+    <th>Expected Outcome</th>
+  </tr>
+  <tr>
+    <td>Valid Inputs: s1 = "good", s2 = "good morning"</td>
+    <td>true</td>
+  </tr>
+  <tr>
+    <td>Valid Inputs: s1 = "a", s2 = "abc"</td>
+    <td>true</td>
+  </tr>
+  <tr>
+    <td>Invalid Inputs: s1 = "", s2 = "good morning"</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>Invalid Inputs: s1 = "morning", s2 = "good morning"</td>
+    <td>false</td>
+  </tr>
+</table>
+
+<br>
+
+**Boundary Value Analysis:**
+
+<table>
+  <tr>
+    <th>Tester Action and Input Data</th>
+    <th>Expected Outcome</th>
+  </tr>
+  <tr>
+    <td>s1 = "", s2 = "software"</td>
+    <td>True</td>
+  </tr>
+  <tr>
+    <td>s1 = "soft", s2 = "software"</td>
+    <td>True</td>
+  </tr>
+  <tr>
+    <td>s1 = "software", s2 = "soft"</td>
+    <td>False</td>
+  </tr>
+  <tr>
+    <td>s1 = "a", s2 = "ab"</td>
+    <td>True</td>
+  </tr>
+  <tr>
+    <td>s1 = "software", s2 = "softwareefdfeee"</td>
+    <td>True</td>
+  </tr>
+  <tr>
+    <td>s1 = "abc", s2 = "abc"</td>
+    <td>True</td>
+  </tr>
+  <tr>
+    <td>s1 = "a", s2 = "b"</td>
+    <td>False</td>
+  </tr>
+  <tr>
+    <td>s1 = "a", s2 = "a"</td>
+    <td>True</td>
+  </tr>
+  <tr>
+    <td>s1 = "a", s2 = "b"</td>
+    <td>False</td>
+  </tr>
+  <tr>
+    <td>s1 = "a", s2 = " "</td>
+    <td>False</td>
+  </tr>
+
+  <tr>
+    <td>s1 = "", s2 = ""</td>
+    <td>True</td>
+  </tr>
+</table>
+</br>
+<br>
+
 
 **Output**
+</br>
+![image](https://user-images.githubusercontent.com/97961910/232784840-150a6b59-c557-4ca0-8541-5636ddd12445.png)
+
 
 ---
 
