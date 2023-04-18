@@ -441,10 +441,175 @@ class p2_test {
 &rarr; Test-case for this program is as follows.
 
 **allProgramme.java**
+```java
+package tests;
+
+public class allProgramme {
+	int binarySearch(int v, int a[])
+	{
+	    int lo,mid,hi;
+	    lo = 0;
+	    hi = a.length-1;
+	    while (lo <= hi)
+	    {
+	        mid = (lo+hi)/2;
+	        if (v == a[mid])
+	        return (mid);
+	        else if (v < a[mid])
+	        hi = mid-1;
+	        else
+	        lo = mid+1;
+	    }
+	    return(-1);
+	}
+}
+
+```
 
 **p3_test.java**
+```java
+package tests;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class p3_testing {
+
+	@Test
+	public void test1() {
+		int arr[] = { 6,7,8,9,10 };
+		allProgramme program = new allProgramme();
+		int result = program.binarySearch(8, arr);
+		
+		assertEquals(2, result);
+	}
+	
+	@Test
+	public void test2() {
+		int arr[] = { 1,2,3,4,5 };
+		allProgramme program = new allProgramme();
+		int result = program.binarySearch(1, arr);
+		
+		assertEquals(0, result);
+	}
+	
+	@Test
+	public void test3() {
+		int arr[] = { 6,7,8,9,10 };
+		allProgramme program = new allProgramme();
+		int result = program.binarySearch(7, arr);
+		
+		assertEquals(1, result);
+	}
+	
+	@Test
+	public void test4() {
+		int arr[] = { 1,2,3,4,5 };
+		allProgramme program = new allProgramme();
+		int result = program.binarySearch(6, arr);
+		
+		assertEquals(-1, result);
+	}
+	
+	@Test
+	public void test5() {
+		int arr[] = { 1 };
+		allProgramme program = new allProgramme();
+		int result = program.binarySearch(1, arr);
+		
+		assertEquals(0, result);
+	}
+	
+	@Test
+	public void test6() {
+		int arr[] = {  };
+		allProgramme program = new allProgramme();
+		int result = program.binarySearch(1, arr);
+		assertEquals(-1, result);
+	}
+				
+	@Test
+	public void test7() {
+		int arr[] = { 1, 2, 3 };
+		allProgramme program = new allProgramme();
+		int result = program.binarySearch(3, arr);
+			
+		assertEquals(2, result);
+	}
+
+}
+
+```
+
+**Equivalence Partitioning:**
+
+<table>
+  <tr>
+    <th>Tester Action and Input Data</th>
+    <th>Expected Outcome</th>
+  </tr>
+  <tr>
+    <td>v=8, a=[6,7,8,9,10]</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td>v=1, a=[1 , 2 , 3 , 4 , 5]</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>v=7, a=[6,7,8,9,10]</td>
+    <td>4</td>
+  </tr>
+  <tr>
+    <td>v=6, a=[1 , 2 , 3 , 4 , 5]</td>
+    <td>-1</td>
+  </tr>
+  <tr>
+    <td>v=1, a=[1]</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>v=1, a=[]</td>
+    <td>-1</td>
+  </tr>
+	<tr>
+    <td>v=3, a=[1 , 2 , 3]</td>
+    <td>2</td>
+  </tr>
+	
+</table>
+
+**Boundary Value Analysis:**
+
+<table>
+  <tr>
+    <th>Tester Action and Input Data</th>
+    <th>Expected Outcome</th>
+  </tr>
+  <tr>
+    <td>v=1, a=[1]</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>v=6, a=[]</td>
+    <td>-1</td>
+  </tr>
+  <tr>
+    <td>v=1, a=[1, 2, 3]</td>
+    <td>0 (smallest element in the array)</td>
+  </tr>
+  <tr>
+    <td>v=3, a=[1, 2, 3]</td>
+    <td>2 (largest element in the array)</td>
+  </tr>
+</table>
+</br>
+
 
 **Output**
+</br>
+![image](https://user-images.githubusercontent.com/97961910/232780675-5c7897fd-9052-4005-84c5-74c5b4ba1aa0.png)
 
 ---
 ### P4. The following problem has been adapted from The Art of Software Testing, by G. Myers (1979). Thefunction triangle takes three integer parameters that are interpreted as the lengths of the sides of atriangle. It returns whether the triangle is equilateral (three lengths equal), isosceles (two lengths equal),scalene (no lengths equal), or invalid (impossible lengths).
