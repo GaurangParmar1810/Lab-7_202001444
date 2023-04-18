@@ -435,3 +435,39 @@ class p2_test {
 ![image](https://user-images.githubusercontent.com/97961910/232777533-8f1d7e32-e7ab-484e-8662-74defcece0d1.png)
  
 ---
+
+### P3. The function `binarySearch` searches for a value `v` in an ordered array of integers `a`. If `v` appears in the array `a`, then the function returns an index `i`, such that `a[i] == v`; otherwise, `-1` is returned.
+
+&rarr; Test-case for this program is as follows.
+
+**allProgramme.java**
+
+**p3_test.java**
+
+**Output**
+
+---
+### P4. The following problem has been adapted from The Art of Software Testing, by G. Myers (1979). Thefunction triangle takes three integer parameters that are interpreted as the lengths of the sides of atriangle. It returns whether the triangle is equilateral (three lengths equal), isosceles (two lengths equal),scalene (no lengths equal), or invalid (impossible lengths).
+
+&rarr; Test-case for this program is as follows.
+
+**allProgramme.java**
+
+**p4_test.java**
+
+**Output**
+
+---
+### P5. The function `prefix(String s1, String s2)` returns whether or not the string `s1` is a prefix of string `s2` (you may assume that neither s1 nor s2 is null).
+
+&rarr; Test-case for this program is as follows.
+
+**allProgramme.java**
+
+**p4_test.java**
+
+**Output**
+
+---
+
+### P6. In this program we consider program given in P4 but value can be float rather than integers
