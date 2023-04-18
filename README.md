@@ -252,7 +252,7 @@ class p1_test {
 
 ### P2.The function countItem returns the number of times a value v appears in an array of integers a.
 
-$rarr; Test-case for this program is as follows.
+&rarr; Test-case for this program is as follows.
 
 **allProgramme.java**
 ```java
