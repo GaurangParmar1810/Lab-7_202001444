@@ -1149,9 +1149,9 @@ Both test cases have all sides equal, but only test case 1 should form an equila
 <br>
 
 **f) For the boundary condition A2 + B2 = C2 case (right-angle triangle), identify test cases to verify the boundary.**
-3, 4, 5
-0, 0, 0
--3, -4, -5
+3, 4, 5<br>
+0, 0, 0<br>
+-3, -4, -5<br>
 Both test cases satisfy the Pythagorean theorem, but only test case 1 should form right-angled triangle, other input are invalid.
 triangle
 
@@ -1170,3 +1170,54 @@ TP2 (EC2): A=-2, B=4, C=5 (invalid input)<br>
 Note: Test cases TC1 to TC10 covers all identified equivalence classes.<br>
 <br>
 
+***
+# Section B
+  
+The code below is part of a method in the ConvexHull class in the VMAP system. The following is a small
+fragment of a method in the ConvexHull class. For the purposes of this exercise you do not need to know the
+intended function of the method. The parameter p is a Vector of Point objects, p.size() is the size of the
+vector p, (p.get(i)).x is the x component of the ith point appearing in p, similarly for (p.get(i)).y. This exercise is
+concerned with structural testing of code and so the focus is on creating test sets that satisfy some particular
+coverage criterion.
+
+1. Convert the Java code comprising the beginning of the doGraham method into a control flow graph(CFG).
+    
+    ![image](https://user-images.githubusercontent.com/75557009/231730370-c1898df9-d977-44a5-8eac-a6bf131824ff.png)
+
+2. Construct test sets for your flow graph that are adequate for the following criteria:
+    a. Statement Coverage.
+    b. Branch Coverage.
+    c. Basic Condition Coverage.
+
+a. Statement Coverage:
+    
+| Test Case | Condition | Input
+| --------- | ------ | ------
+| 1 | Empty Vector | p=[] 
+| 2 | Vector with one point | p=[(1,1)]
+| 3 | Vector with two points with same y co-ordinate | p=[(1,1),(2,1)]
+| 4 | Vector with two points with different y co-ordinate | p=[(1,1),(1,2)]
+| 5 | Vector with three Points | p=[(1,1),(2,2),(3,3)]   
+
+b. Branch Coverage:
+    
+| Test Case | Condition | Input
+| --------- | --------- | ---
+| 1 | Empty Vector | p=[]
+| 2 | Vector with one point | p=[(2,2)]
+| 3 | Vector with two points having same y co-ordinate | p=[(1,1),(2,1)]
+| 4 | Vector with two points having different y co-ordinate | p=[(1,1),(1,2)]
+| 5 | Vector with three or more point with some have same y co-ordinate and some have same x co-ordinate | p=[(1,1),(1,2),(2,1),(3,2)]
+| 6 | Vector with three or more point with different y co-ordinate and different x co-ordinate | p=[(1,1),(2,2),(3,3),(4,4)]
+
+c. Basic condition Coverage:
+    
+| Test Case | Condition | Input
+| --------- | ---------- | ------
+| 1 | Empty Vector | p=[]
+| 2 | Vector with one point | p=[(2,2)]
+| 3 | Vector with two points having same y co-ordinate | p=[(1,1),(2,1)]
+| 4 | Vector with two points having different y co-ordinate | p=[(1,1),(1,2)]
+| 5 | Vector with three or more point with some have same y co-ordinate and some have same x co-ordinate | p=[(1,1),(1,2),(2,1),(3,2)]
+| 6 | Vector with three or more point with different y co-ordinate and different x co-ordinate | p=[(1,1),(2,3),(3,2),(4,5)]
+  
