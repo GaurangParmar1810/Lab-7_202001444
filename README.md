@@ -1183,7 +1183,8 @@ coverage criterion.
 
 1. Convert the Java code comprising the beginning of the doGraham method into a control flow graph(CFG).
     
-    ![image](https://user-images.githubusercontent.com/75557009/231730370-c1898df9-d977-44a5-8eac-a6bf131824ff.png)
+    ![image](https://user-images.githubusercontent.com/97961910/232847212-07165265-c000-40fc-8ede-e4d2150123f7.png)
+
 
 2. Construct test sets for your flow graph that are adequate for the following criteria:
     a. Statement Coverage.
