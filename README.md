@@ -17,7 +17,7 @@ Consider a program for determining the previous date. Its input is triple of day
 following ranges `1 <= month <= 12`, `1 <= day <= 31`, `1900 <= year <= 2015`.The possible output dates would be
 previous date or invalid date. Design the equivalence class test cases?
 
---> Equivalence classes for this program are as below:
+&raar; Equivalence classes for this program are as below:
 
 `For Day (DD)`:
     
@@ -73,8 +73,178 @@ Test-cases based on `Boundary Analysis`:
 
 ---
 
-### P1. The function linearSearch searches for a value v in an array of integers a. If v appears in the array a, then the function returns the first index i, such that a[i] == v; otherwise, -1 is returned.
+### P1. The function `linearSearch` searches for a value v in an array of integers a. If v appears in the array a, then the function returns the first index i, such that `a[i] == v`; otherwise, -1 is returned.
 
---> Test-case for this program is as follows.
+&rarr; Test-case for this program is as follows.
+
+**allProgramme.java**
+```java
+package tests;
+
+public class allProgramme {
+	int linearSearch(int v, int a[])
+	{
+		int i = 0;
+		while (i < a.length)
+		{
+			if (a[i] == v)
+				return(i);
+			i++;
+		}
+		return (-1);
+	}
+}
+
+```
+**p1_test.java:**
+
+```java
+package tests;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class p1_test {
+
+	@Test
+	public void test1() {
+		int arr[] = { 1,2,3,4,5 };
+		
+		allProgramme program = new allProgramme();
+		int result = program.linearSearch(1, arr);
+		
+		// System.out.println(result);
+		assertEquals(0, result);
+	}
+	
+	@Test
+	public void test2() {
+		int arr[] = { };
+		
+		allProgramme program = new allProgramme();
+		int result = program.linearSearch(1, arr);
+		
+		// System.out.println(result);
+		assertEquals(-1, result);
+	}
+	
+	@Test
+	public void test3() {
+		int arr[] = { 1 };
+		
+		allProgramme program = new allProgramme();
+		int result = program.linearSearch(1, arr);
+		
+		// System.out.println(result);
+		assertEquals(0, result);
+	}
+	
+	@Test
+	public void test4() {
+		int arr[] = { 18 };
+		allProgramme program = new allProgramme();
+		int result = program.linearSearch(1, arr);
+		
+		// System.out.println(result);
+		assertEquals(-1, result);
+	}
+	
+	@Test
+	public void test5() {
+		int arr[] = { 5, 4, 3, 1, 2 };
+		
+		allProgramme program = new allProgramme();
+		int result = program.linearSearch(10, arr);
+		
+		// System.out.println(result);
+		assertEquals(-1, result);
+	}
+
+}
+
+```
+**Equivalence Partitioning:**
+
+<table>
+  <thead>
+    <tr>
+      <th>Tester Action and Input Data</th>
+      <th>Expected Outcome</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Test with v as a non-existent value and an empty array a[]</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <td>Test with v as a non-existent value and a non-empty array a[]</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <td>Test with v as an existent value and an empty array a[]</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <td>Test with v as an existent value and a non-empty array a[] where v exists</td>
+      <td>the index of v in a[]</td>
+    </tr>
+    <tr>
+      <td>Test with v as an existent value and a non-empty array a[] where v does not exist</td>
+      <td>-1</td>
+    </tr>
+  </tbody>
+</table>
+
+**Boundary Value Analysis:**
+
+<table>
+  <thead>
+    <tr>
+      <th>Tester Action and Input Data</th>
+      <th>Expected Outcome</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Test with v as a non-existent value and an empty array a[]</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <td>Test with v as a non-existent value and a non-empty array a[]</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <td>Test with v as an existent value and an array a[] of length 0</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <td>Test with v as an existent value and an array a[] of length 1, where v exists</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>Test with v as an existent value and an array a[] of length 1, where v does not exist</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <td>Test with v as an existent value and an array a[] of length greater than 1, where v exists at the beginning of the array</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>Test with v as an existent value and an array a[] of length greater than 1, where v exists at the end of the array</td>
+      <td>the last index where v is found</td>
+    </tr>
+    <tr>
+      <td>Test with v as an existent value and an array a[] of length greater than 1, where v exists in the middle of the array</td>
+      <td>the index where v is found</td>
+    </tr>
+  </tbody>
+</table>
+</br>
+
+**Output**:
+
+![image](https://user-images.githubusercontent.com/97961910/232771576-ba7695c3-5106-4226-86e9-b36e069a2fc3.png)
 
 ---
