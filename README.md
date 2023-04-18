@@ -612,15 +612,251 @@ class p3_testing {
 ![image](https://user-images.githubusercontent.com/97961910/232780675-5c7897fd-9052-4005-84c5-74c5b4ba1aa0.png)
 
 ---
-### P4. The following problem has been adapted from The Art of Software Testing, by G. Myers (1979). Thefunction triangle takes three integer parameters that are interpreted as the lengths of the sides of atriangle. It returns whether the triangle is equilateral (three lengths equal), isosceles (two lengths equal),scalene (no lengths equal), or invalid (impossible lengths).
+### P4. The following problem has been adapted from The Art of Software Testing, by G. Myers (1979). The function `triangle` takes three integer parameters that are interpreted as the lengths of the sides of atriangle. It returns whether the triangle is `equilateral (three lengths equal)`, `isosceles (two lengths equal)`,`scalene (no lengths equal)`, or `invalid (impossible lengths)`.
 
 &rarr; Test-case for this program is as follows.
 
 **allProgramme.java**
+```java
+public class allProgramme
+    {
+        final int EQUILATERAL = 0;
+        final int ISOSCELES = 1;
+        final int SCALENE = 2;
+        final int INVALID = 3;
+        public int triangle(int a, int b, int c)
+        {
+            if (a >= b+c || b >= a+c || c >= a+b)
+                return(INVALID);
+            if (a == b && b == c)
+                return(EQUILATERAL);
+            if (a == b || a == c || b == c)
+                return(ISOSCELES);
+            return(SCALENE);
 
+        }
+    }
+```
 **p4_test.java**
 
+```java
+package tests;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class p4_test {
+
+	@Test
+	public void test1() {
+		int a = 2, b = 2, c = 2;
+		allProgramme program = new allProgramme();
+		int result = program.triangle(a, b, c);
+		
+		assertEquals(result, 0);
+	}
+	@Test
+	public void test2() {
+		int a = 3, b = 3, c = 4;
+		allProgramme program = new allProgramme();
+		int result = program.triangle(a, b, c);
+		
+		assertEquals(result, 1);
+	}
+	@Test
+	public void test3() {
+		int a = 6, b = 5, c = 4;
+		allProgramme program = new allProgramme();
+		int result = program.triangle(a, b, c);
+		
+		assertEquals(result, 2);
+	}
+	@Test
+	public void test4() {
+		int a = 0, b = 0, c = 0;
+		allProgramme program = new allProgramme();
+		int result = program.triangle(a, b, c);
+		
+		assertEquals(result, 3);
+	}
+	@Test
+	public void test5() {
+		int a =-1, b =-1, c = 5;
+		allProgramme program = new allProgramme();
+		int result = program.triangle(a, b, c);
+		
+		assertEquals(result, 3);
+	}
+	@Test
+	public void test6() {
+		int a = 2, b = 2, c = 1;
+		allProgramme program = new allProgramme();
+		int result = program.triangle(a, b, c);
+		
+		assertEquals(result, 1);
+	}
+	@Test
+	public void test7() {
+		int a = 0, b = 1, c = 1;
+		allProgramme program = new allProgramme();
+		int result = program.triangle(a, b, c);
+		
+		assertEquals(result, 3);
+	}
+	@Test
+	public void test8() {
+		int a = 1, b = 0, c = 1;
+		allProgramme program = new allProgramme();
+		int result = program.triangle(a, b, c);
+		
+		assertEquals(result, 3);
+	}
+	@Test
+	public void test9() {
+		int a = 1, b = 1, c = 0;
+		allProgramme program = new allProgramme();
+		int result = program.triangle(a, b, c);
+		
+		assertEquals(result, 3);
+	}
+	@Test
+	public void test10() {
+		int a = 1, b = 2, c = 3;
+		allProgramme program = new allProgramme();
+		int result = program.triangle(a, b, c);
+		
+		assertEquals(result, 3);
+	}
+	@Test
+	public void test11() {
+		int a = 3, b = 1, c = 3;
+		allProgramme program = new allProgramme();
+		int result = program.triangle(a, b, c);
+		
+		assertEquals(result, 1);
+	}
+	@Test
+	public void test12() {
+		int a = 5, b = 4, c = 2;
+		allProgramme program = new allProgramme();
+		int result = program.triangle(a, b, c);
+		
+		assertEquals(result, 2);
+	}
+	@Test
+	public void test13() {
+		int a = Integer.MAX_VALUE, b = Integer.MAX_VALUE, c = Integer.MAX_VALUE;
+		allProgramme program = new allProgramme();
+		int result = program.triangle(a, b, c);
+		
+		assertEquals(result, 3);
+	}
+
+}
+
+``` 
+**Equivalence Partitioning:**
+
+<table>
+  <tr>
+    <th>Tester Action and Input Data</th>
+    <th>Expected Outcome</th>
+  </tr>
+  <tr>
+    <td>Valid input: a=2, b=2, c=2</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>Valid input: a=3, b=3, c=4</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>Valid input: a=6, b=5, c=4</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td>Invalid input: a=0, b=0, c=0</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>Invalid input: a=-1, b=-1, c=5</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>Valid input: a=1, b=1, c=1</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>Valid input: a=2, b=2, c=1</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>Valid input: a=3, b=4, c=5</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td>Invalid input: a=0, b=1, c=1</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>Invalid input: a=1, b=0, c=1</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>Invalid input: a=1, b=1, c=0</td>
+    <td>3</td>
+  </tr>
+</table>
+</br>
+
+**Boundary Value Analysis:**
+<table>
+  <tr>
+    <th>Tester Action and Input Data</th>
+    <th>Expected Outcome</th>
+  </tr>
+  <tr>
+    <td>Invalid inputs: a = 0, b = 0, c = 0</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>Invalid inputs: a + b = c or b + c = a or c + a = b (a=3, b=4, c=8)</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>Equilateral triangles: a = b = c = 1</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>Isosceles triangles: a = b ≠ c = 10</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>Scalene triangles: a = b + c - 1</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td>Scalene triangles: b = a + c - 1</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td>Scalene triangles: c = a + b - 1</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td>Maximum values: a, b, c = Integer.MAX_VALUE</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>Minimum values: a, b, c = Integer.MIN_VALUE</td>
+    <td>3</td>
+  </tr>
+</table>
+<br>
+
 **Output**
+![image](https://user-images.githubusercontent.com/97961910/232782320-dfb1ff80-15b1-47d8-b154-b385eaeb73f6.png)
 
 ---
 ### P5. The function `prefix(String s1, String s2)` returns whether or not the string `s1` is a prefix of string `s2` (you may assume that neither s1 nor s2 is null).
